@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        REQUIREMENTS: .docker/dev.txt
+    entrypoint: ./.docker/entrypoint.sh
+    container_name: django-bp
+    tty: true
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    env_file: ./.env
+    depends_on:
+      - db
+    networks:
+      - django-network
+
+  db:
+    image: postgres:11.5-alpine
+    container_name: django-db
+    tty: true
+    volumes:
+      - .data/.pgdata:/var/lib/postgresql/data
+    env_file: ./.env
+    ports:
+      - 5435:5432
+    networks:
+      - django-network
+
+networks:
+  django-network:
+    driver: bridge

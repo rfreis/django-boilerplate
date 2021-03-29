@@ -1,0 +1,2 @@
+LOCAL_APPS = [
+]
