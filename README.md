@@ -1,6 +1,6 @@
 # Django 3.1.2 Boilerplate
 
-This repository has a default application using `Django 3.1.2` with `Django Rest Framework` running on `Docker`, `docker-compose` and `postgresql`.
+This repository has a default application using `Django 3.1.11` with `Django Rest Framework` running on `Docker`, `docker-compose` and `postgresql`.
 
 ## Requirements
 
