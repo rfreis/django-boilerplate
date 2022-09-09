@@ -3,13 +3,13 @@
 import os
 import sys
 
-from app.settings.utils import *
 
-SETTINGS_MODULE_PATH = get_env_var('SETTINGS_MODULE_PATH')
+SETTINGS_MODULE_PATH = os.environ.get("SETTINGS_MODULE_PATH", "app.settings.local")
+
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', SETTINGS_MODULE_PATH)
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", SETTINGS_MODULE_PATH)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -21,5 +21,5 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

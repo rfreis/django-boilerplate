@@ -25,14 +25,3 @@ DEBUG_TOOLBAR_PANELS = [
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-
-# Static files & Media
-
-STATIC_ROOT = os.path.join(BASE_DIR, "assets")
-
-STATIC_URL = '/assets/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-MEDIA_URL = '/media/'
-

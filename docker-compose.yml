@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  backend:
+  django:
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        REQUIREMENTS: .docker/dev.txt
-    entrypoint: ./.docker/entrypoint.sh
+        REQUIREMENTS: requirements-dev.txt
+    command: python manage.py runserver 0.0.0.0:8000
     container_name: django-bp
     tty: true
     stdin_open: true
@@ -28,7 +28,7 @@ services:
     container_name: django-db
     tty: true
     volumes:
-      - .data/.pgdata:/var/lib/postgresql/data
+      - ../.data/.pgdata:/var/lib/postgresql/data
     env_file: ./.env
     ports:
       - 5435:5432
